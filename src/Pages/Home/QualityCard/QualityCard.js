@@ -11,7 +11,7 @@ const QualityCard = () => {
                 </div>
                 <h1 className='text-5xl font-bold text-green-500'>Why People Choose Us</h1>
             </div>
-            <div className='grid grid-cols-5 gap-5 px-10 my-6'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 px-10 my-6'>
                 <div className="card bg-base-100 shadow-xl">
                     <div className="card-body">
                         <figure className="px-10 pt-10">

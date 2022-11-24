@@ -5,9 +5,9 @@ import logo from "../../../Assets/logo.png";
 const Navbar = () => {
 
     const menu = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/">Home</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/about">About</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/contact">Contact</Link></li>
     </>
     return (
         <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white">
