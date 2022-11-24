@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div className=''>
             <div className="carousel w-full overflow-hidden">
@@ -15,7 +20,7 @@ const Hero = () => {
                                 <p className="py-6 font-semibold text-slate-800 text-xl">
                                     We are the most trusted and leading online marketplace for buying and selling used mobile phones in Bangladesh.
                                 </p>
-                                <button className="btn btn-accent font-bold text-white">All Category</button>
+                                <Link to="/products" className="btn btn-accent font-bold text-white">All Category</Link>
                             </div>
                         </div>
                     </div>
@@ -31,7 +36,7 @@ const Hero = () => {
                                 <p className="py-6 font-semibold text-slate-800 text-xl">
                                     We are the most trusted and leading online marketplace for buying and selling used mobile phones in Bangladesh.
                                 </p>
-                                <button className="btn btn-accent font-bold text-white">All Category</button>
+                                <Link to="/products" className="btn btn-accent font-bold text-white">All Category</Link>
                             </div>
                         </div>
                     </div>
@@ -47,7 +52,7 @@ const Hero = () => {
                                 <p className="py-6 font-semibold text-slate-800 text-xl">
                                     We are the most trusted and leading online marketplace for buying and selling used mobile phones in Bangladesh.
                                 </p>
-                                <button className="btn btn-accent font-bold text-white">All Category</button>
+                                <Link to="/products" className="btn btn-accent font-bold text-white">All Category</Link>
                             </div>
                         </div>
                     </div>
@@ -63,7 +68,7 @@ const Hero = () => {
                                 <p className="py-6 font-semibold text-slate-800 text-xl">
                                     We are the most trusted and leading online marketplace for buying and selling used mobile phones in Bangladesh.
                                 </p>
-                                <button className="btn btn-accent font-bold text-white">All Category</button>
+                                <Link to="/products" className="btn btn-accent font-bold text-white">All Category</Link>
                             </div>
                         </div>
                     </div>

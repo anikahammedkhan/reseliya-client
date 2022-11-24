@@ -18,7 +18,7 @@ const FewProducts = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6'>
                 {
-                    fewProducts.map(product => <ProductCard product={product}></ProductCard>)
+                    fewProducts.map(product => <ProductCard product={product} key={product._id}></ProductCard>)
                 }
             </div>
             <div className='text-center my-12'>
