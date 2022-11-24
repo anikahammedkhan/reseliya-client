@@ -6,8 +6,23 @@ const Navbar = () => {
 
     const menu = <>
         <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/">Home</Link></li>
-        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/about">About</Link></li>
-        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/contact">Contact</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1' tabIndex={0}>
+            <Link>
+                Categories
+                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+            </Link>
+            <ul className="p-2 bg-base-100">
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/products">All Products</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Apple">Apple</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Samsung">Samsung</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Xiaomi">Xiaomi</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/OnePlus">OnePlus</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Nokia">Nokia</Link></li>
+                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Realme">Realme</Link></li>
+            </ul>
+        </li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/about">Blog</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/contact">Login</Link></li>
     </>
     return (
         <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white">

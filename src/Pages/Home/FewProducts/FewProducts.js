@@ -22,7 +22,7 @@ const FewProducts = () => {
                 }
             </div>
             <div className='text-center my-12'>
-                <Link className='btn btn-success text-white font-bold'>See More</Link>
+                <Link to='/products' className='btn btn-success text-white font-bold'>See More</Link>
             </div>
         </div>
     );

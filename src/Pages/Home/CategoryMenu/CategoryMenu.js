@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CategoryMenu = () => {
     const [categories, setCategories] = useState([]);
@@ -17,12 +18,12 @@ const CategoryMenu = () => {
             </div>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 my-8 px-5">
                 {
-                    categories.map(category => <div className="card card-compact bg-base-100 shadow-xl">
+                    categories.map(category => <Link to={`/category/${category.categoryName}`} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={category.catImg} alt="Mobile" className='bg-base-100 w-[160px] h-[80px]' /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{category.categoryName}</h2>
                         </div>
-                    </div>
+                    </Link>
                     )
                 }
             </div>
