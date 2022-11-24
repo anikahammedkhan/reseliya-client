@@ -1,4 +1,5 @@
 import React from 'react';
+import CallToAction from '../CallToAction/CallToAction';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import CustomerReview from '../CustomerReview/CustomerReview';
 import Hero from '../Hero/Hero';
@@ -11,6 +12,7 @@ const Home = () => {
             <CategoryMenu></CategoryMenu>
             <CustomerReview></CustomerReview>
             <QualityCard></QualityCard>
+            <CallToAction></CallToAction>
         </div>
     );
 };
