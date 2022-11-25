@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import SingleProductDetails from '../../Components/SingleProductDetails/SingleProductDetails';
 import Main from '../../Layout/Main/Main';
 import AllProducts from '../../Pages/AllProducts/AllProducts';
+import Blog from '../../Pages/Blog/Blog';
 import CategoryProducts from '../../Pages/CategoryProducts/CategoryProducts';
 import Error from '../../Pages/Error/Error';
 import Home from '../../Pages/Home/Home/Home';
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                 path: '/product/:id',
                 element: <SingleProductDetails></SingleProductDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+            },
+            {
+                path: "/blog",
+                element: <Blog></Blog>
             },
             {
                 path: '*',

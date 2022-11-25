@@ -21,8 +21,8 @@ const Navbar = () => {
                 <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/category/Realme">Realme</Link></li>
             </ul>
         </li>
-        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/about">Blog</Link></li>
-        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/contact">Login</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/blog">Blog</Link></li>
+        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/login">Login</Link></li>
     </>
     return (
         <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white">
