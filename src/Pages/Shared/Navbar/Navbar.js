@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../../Assets/logo.png";
+import { AuthContext } from '../../../Context/UserContext';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
 
     const menu = <>
         <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/">Home</Link></li>
@@ -22,7 +24,14 @@ const Navbar = () => {
             </ul>
         </li>
         <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/blog">Blog</Link></li>
-        <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl'><Link to="/login">Login</Link></li>
+        {
+            user?.uid ?
+                <>
+                    <li><button onClick={logOut} className='font-semibold text-lg hover:bg-amber-300 rounded-xl bg-red-400 text-white'>Log Out</button></li>
+                </> : <>
+                    <li><Link className='font-semibold text-lg hover:bg-amber-300 rounded-xl' to='/login'>Login</Link></li>
+                </>
+        }
     </>
     return (
         <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white">
