@@ -1,8 +1,55 @@
-import React from 'react';
+import { updateProfile } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
+
+    const { auth, createUser, loading } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const role = form.role.value;
+
+        createUser(email, password)
+            .then((result) => {
+                setError('');
+                form.reset();
+                updateProfile(auth.currentUser, { displayName: name })
+                    .then(() => {
+                        const user = auth.currentUser;
+                        console.log(user);
+                        toast.success('Registration Successful');
+                    })
+                    .catch((error) => {
+                        setError(error.message);
+                        toast.error(error.message);
+                    });
+            })
+            .catch((error) => {
+                setError(error.message);
+                toast.error(error.message);
+            });
+
+
+    }
+
+    // if (loading) {
+    //     return (
+    //         <div className='w-full h-[600px] flex items-center'>
+    //             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-cyan-600 mx-auto"></div>
+    //         </div>
+    //     )
+    // }
+
     return (
         <div className='my-12'>
             <HelmetProvider>
@@ -15,18 +62,18 @@ const Register = () => {
                 <h2 className="text-sm text-center">Already have an account?
                     <Link to="/login" className="focus:underline hover:underline text-green-500"> Login here</Link>
                 </h2>
-                <div className='flex my-5 justify-center items-center gap-3'>
-                    <p className='text-lg text-green-500 font-semibold'>Account Type :</p>
-                    <div className='flex gap-4'>
-                        <p>Buyer</p>
-                        <input type="radio" name="role" className="radio radio-success" checked />
-                        <input type="radio" name="role" className="radio radio-success" />
-                        <p>Seller</p>
-                    </div>
-                </div>
                 <div className="flex items-center w-full my-4">
                     <div className="w-full">
-                        <form onSubmit="" className="space-y-8">
+                        <form onSubmit={handleRegister} className="space-y-8">
+                            <div className='flex justify-center items-center gap-3'>
+                                <p className='text-lg text-green-500 font-semibold'>Account Type :</p>
+                                <div className='flex gap-4'>
+                                    <p>Buyer</p>
+                                    <input type="radio" name="role" className="radio radio-success" defaultChecked value="Buyer" />
+                                    <input type="radio" name="role" className="radio radio-success" value="Seller" />
+                                    <p>Seller</p>
+                                </div>
+                            </div>
                             <div className="space-y-4">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="block text-sm">Your Name</label>
@@ -43,7 +90,7 @@ const Register = () => {
                                     <input type="password" name="password" id="password" placeholder="Your Password" className="w-full px-3 py-2 border rounded-md border-gray-700 focus:border-sky-600" required />
                                 </div>
                             </div>
-                            <p className='text-red-500'>error</p>
+                            <p className='text-red-500'>{error}</p>
                             <button type="submit" className="w-full px-8 py-3 font-bold rounded-md bg-green-600 hover:bg-green-700 text-white text-xl">Register</button>
                         </form>
                     </div>
