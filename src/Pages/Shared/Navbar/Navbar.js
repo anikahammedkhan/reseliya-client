@@ -27,15 +27,16 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
-                    <li><button onClick={logOut} className='font-semibold text-lg hover:bg-amber-300 rounded-xl bg-red-400 text-white'>Log Out</button></li>
+                    <li><Link className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1' to='/dashboard'>Dashboard</Link></li>
+                    <li><button onClick={logOut} className='font-semibold text-lg hover:bg-red-600 rounded-xl bg-red-400 text-white'>Log Out</button></li>
                 </> : <>
-                    <li><Link className='font-semibold text-lg hover:bg-amber-300 rounded-xl' to='/login'>Login</Link></li>
+                    <li><Link className='font-semibold text-lg hover:bg-green-500 rounded-xl bg-green-400 text-white' to='/login'>Login</Link></li>
                 </>
         }
     </>
     return (
-        <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white">
-            <div className="navbar-start">
+        <div className="navbar shadow-xl sticky top-0 rounded-lg z-20 bg-white justify-between">
+            <div className="justify-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -44,9 +45,14 @@ const Navbar = () => {
                         {menu}
                     </ul>
                 </div>
-                <Link to="/"><img src={logo} alt="" className='w-full md:w-1/2 lg:w-1/3' /></Link>
+                <Link to="/"><img src={logo} alt="" className='w-[200px]' /></Link>
             </div>
-            <div className="navbar-end hidden lg:flex">
+            <div className="dropdown">
+                <label htmlFor="dashboard" tabIndex={2} className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+            </div>
+            <div className="justify-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menu}
                 </ul>

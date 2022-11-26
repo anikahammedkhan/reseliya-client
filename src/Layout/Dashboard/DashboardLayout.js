@@ -1,9 +1,61 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
+import Footer from '../../Pages/Shared/Footer/Footer';
+import Navbar from '../../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [isSeller, setIsSeller] = useState(false);
+    const [isBuyer, setIsBuyer] = useState(false);
+    const email = user?.email;
+    useEffect(() => {
+        fetch("http://localhost:5000/users")
+            .then((res) => res.json())
+            .then((data) => {
+                const user = data.find((user) => user.email === email);
+                if (user) {
+                    setIsAdmin(user.role === "Admin");
+                    setIsSeller(user.role === "Seller");
+                    setIsBuyer(user.role === "Buyer");
+                }
+            });
+    }, [email]);
+
+
     return (
         <div>
-            <h1>this is dashboard layout</h1>
+            <Navbar></Navbar>
+            <div className="drawer drawer-mobile">
+                <input id="dashboard" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
+                    <Outlet></Outlet>
+                </div>
+                <div className="drawer-side">
+                    <label htmlFor="dashboard" className="drawer-overlay"></label>
+                    <ul className="menu p-4 w-60 bg-green-100 text-base-content">
+                        {
+                            isBuyer && <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-orders">My Orders</Link></li>
+                        }
+                        {
+                            isSeller && <>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/add-product">Add A Product</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-products">My Products</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-buyers">My Buyers</Link></li>
+                            </>
+                        }
+                        {
+                            isAdmin && <>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/all-sellers">All Sellers</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/all-buyers">All Buyers</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/reported-items">Reported Items</Link></li>
+                            </>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };

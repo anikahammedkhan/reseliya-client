@@ -35,10 +35,26 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 toast.success(`Welcome ${user.displayName}`);
+                saveUser(user.displayName, user.email, "Buyer", user.uid);
             })
             .catch((error) => {
                 setError(error.message);
             });
+    }
+
+    const saveUser = (name, email, role, uId) => {
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, role, uId })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success('User Added Successfully');
+                    navigate(from, { replace: true });
+                }
+            })
     }
 
 

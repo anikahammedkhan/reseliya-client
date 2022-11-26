@@ -2,23 +2,23 @@ import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
-
     const { auth, createUser, loading } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
 
     const handleRegister = (e) => {
+        setError('');
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const role = form.role.value;
-
         createUser(email, password)
             .then((result) => {
                 setError('');
@@ -26,8 +26,9 @@ const Register = () => {
                 updateProfile(auth.currentUser, { displayName: name })
                     .then(() => {
                         const user = auth.currentUser;
-                        console.log(user);
+                        saveUser(email, name, role, user.uid);
                         toast.success('Registration Successful');
+
                     })
                     .catch((error) => {
                         setError(error.message);
@@ -38,8 +39,20 @@ const Register = () => {
                 setError(error.message);
                 toast.error(error.message);
             });
-
-
+    }
+    const saveUser = (name, email, role, uId) => {
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, role, uId })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success('User Added Successfully');
+                    navigate('/');
+                }
+            })
     }
 
     // if (loading) {

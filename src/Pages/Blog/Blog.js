@@ -16,14 +16,14 @@ const Blog = () => {
             <div className="space-y-4 w-3/4 mx-auto">
                 <details className="w-full border rounded-lg" open="">
                     <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-xl">What are the different ways to manage a state in a React application?</summary>
-                    <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 text-lg">
+                    <div className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600 text-lg">
                         There are three ways to manage a state in a React application:
                         <ul className="list-disc list-inside">
                             <li>useState</li>
                             <li>useReducer</li>
                             <li>useContext</li>
                         </ul>
-                    </p>
+                    </div>
                 </details>
                 <details className="w-full border rounded-lg">
                     <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-xl">How does prototypical inheritance work?</summary>
