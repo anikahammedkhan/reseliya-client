@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 
 const Register = () => {
-    const { auth, createUser, loading } = useContext(AuthContext);
+    const { auth, createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -26,9 +26,8 @@ const Register = () => {
                 updateProfile(auth.currentUser, { displayName: name })
                     .then(() => {
                         const user = auth.currentUser;
-                        saveUser(email, name, role, user.uid);
+                        saveUser(name, email, role, user.uid);
                         toast.success('Registration Successful');
-
                     })
                     .catch((error) => {
                         setError(error.message);

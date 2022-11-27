@@ -36,13 +36,13 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-60 bg-green-100 text-base-content">
                         {
-                            isBuyer && <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-orders">My Orders</Link></li>
+                            isBuyer && <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/my-orders">My Orders</Link></li>
                         }
                         {
                             isSeller && <>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/add-product">Add A Product</Link></li>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-products">My Products</Link></li>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/my-buyers">My Buyers</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/add-product">Add A Product</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/my-products">My Products</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/my-buyers">My Buyers</Link></li>
                             </>
                         }
                         {
