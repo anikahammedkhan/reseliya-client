@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import ProductCard from '../../../Components/ProductCard/ProductCard';
 import { AuthContext } from '../../../Context/UserContext';
 import SingleProduct from './SingleProduct/SingleProduct';
 
@@ -13,7 +12,7 @@ const MyProducts = () => {
         fetch(`http://localhost:5000/products/seller/${email}`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [email])
     return (
         <div className='my-12'>
             <HelmetProvider>

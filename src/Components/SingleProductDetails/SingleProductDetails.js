@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal';
 
 const SingleProductDetails = () => {
     useEffect(() => {
@@ -43,7 +44,8 @@ const SingleProductDetails = () => {
                     </div>
                     <div className='flex justify-evenly my-8'>
                         <Link className='btn btn-warning font-bold text-white'>Report To Admin</Link>
-                        <Link className='btn btn-success font-bold text-white'>Book Now</Link>
+                        <label htmlFor="booking-modal" className="btn btn-success font-bold text-white">Book Now</label>
+                        <BookingModal product={product}></BookingModal>
                     </div>
                 </div>
             </div>
