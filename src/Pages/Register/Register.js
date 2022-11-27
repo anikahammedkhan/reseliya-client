@@ -41,7 +41,7 @@ const Register = () => {
     }
     const saveUser = (name, email, role, uId) => {
         fetch('http://localhost:5000/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, role, uId })
         })

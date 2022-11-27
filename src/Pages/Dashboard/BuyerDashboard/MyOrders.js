@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/UserContext';
 
 const MyOrders = () => {
@@ -10,7 +11,37 @@ const MyOrders = () => {
         fetch(`http://localhost:5000/orders/${buyerEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [buyerEmail])
+    }, [buyerEmail, orders])
+
+    const handleDeleteOrder = (id, oId) => {
+
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ status: "available" })
+        })
+            .then(res => res.json())
+            .then(data => {
+                fetch(`http://localhost:5000/orders/${oId}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data) {
+                            toast.success("Order Deleted Successfully");
+                            const remainingOrders = orders.filter(order => order._id !== id);
+                            setOrders(remainingOrders);
+                        }
+                    })
+            })
+    }
+
+
 
     return (
         <div>
@@ -22,6 +53,7 @@ const MyOrders = () => {
                             <th>Product Name</th>
                             <th>Reselling Price</th>
                             <th>Seller Name</th>
+                            <th>Delete Order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +75,9 @@ const MyOrders = () => {
                                     {order?.productPrice}$
                                 </td>
                                 <td>{order?.sellerName}</td>
+                                <td>
+                                    <button onClick={() => handleDeleteOrder(order?.productId, order?._id)} className='btn btn-sm btn-error'>Delete Order</button>
+                                </td>
                             </tr>
                             ))
                         }

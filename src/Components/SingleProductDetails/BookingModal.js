@@ -40,9 +40,22 @@ const BookingModal = ({ product }) => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    toast.success("Booking Successful");
-                    form.reset();
-                    navigate("/dashboard/my-orders");
+                    // set product booking status to booked
+                    fetch(`http://localhost:5000/product/${_id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ status: "Booked" })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data) {
+                                toast.success("Product Booked Successfully");
+                                form.reset();
+                                navigate("/dashboard/my-orders");
+                            }
+                        })
                 }
                 else {
                     toast.error("Booking Failed");
