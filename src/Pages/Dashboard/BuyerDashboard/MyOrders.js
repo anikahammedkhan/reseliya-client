@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext';
 
 const MyOrders = () => {
@@ -54,6 +55,7 @@ const MyOrders = () => {
                             <th>Reselling Price</th>
                             <th>Seller Name</th>
                             <th>Delete Order</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +79,9 @@ const MyOrders = () => {
                                 <td>{order?.sellerName}</td>
                                 <td>
                                     <button onClick={() => handleDeleteOrder(order?.productId, order?._id)} className='btn btn-sm btn-error'>Delete Order</button>
+                                </td>
+                                <td>
+                                    <Link to={`/dashboard/payment/${order?._id}`}><button className='btn btn-success btn-sm'>Pay Now</button></Link>
                                 </td>
                             </tr>
                             ))
