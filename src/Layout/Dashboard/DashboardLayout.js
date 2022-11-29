@@ -47,9 +47,9 @@ const DashboardLayout = () => {
                         }
                         {
                             isAdmin && <>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/all-sellers">All Sellers</Link></li>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/all-buyers">All Buyers</Link></li>
-                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/reported-items">Reported Items</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/all-sellers">All Sellers</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/all-buyers">All Buyers</Link></li>
+                                <li className='font-semibold text-lg hover:bg-amber-300 rounded-xl mx-1'><Link to="/dashboard/reported-items">Reported Items</Link></li>
                             </>
                         }
                     </ul>

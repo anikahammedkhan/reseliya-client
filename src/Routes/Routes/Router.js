@@ -16,6 +16,9 @@ import MyBuyers from '../../Pages/Dashboard/SellerDashboard/MyBuyers';
 import MyProducts from '../../Pages/Dashboard/SellerDashboard/MyProducts';
 import MyOrders from '../../Pages/Dashboard/BuyerDashboard/MyOrders';
 import Payment from '../../Pages/Dashboard/Payment/Payment';
+import AllSellers from '../../Pages/Dashboard/AdminDashboard/AllSellers';
+import Allbuyers from '../../Pages/Dashboard/AdminDashboard/Allbuyers';
+import ReportedItems from '../../Pages/Dashboard/AdminDashboard/ReportedItems';
 
 const router = createBrowserRouter([
     {
@@ -86,6 +89,18 @@ const router = createBrowserRouter([
                 path: "/dashboard/payment/:id",
                 element: <Payment></Payment>,
                 loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`)
+            },
+            {
+                path: '/dashboard/all-sellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/all-buyers',
+                element: <Allbuyers></Allbuyers>
+            },
+            {
+                path: '/dashboard/reported-items',
+                element: <ReportedItems></ReportedItems>
             }
         ]
     }
