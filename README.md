@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Project Name : Reseliya [ Used Product Selling/Buying Site ]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Github Repo Link : https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-anikahammedkhan
 
-## Available Scripts
+### Server Repo Link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-anikahammedkhan
 
-In the project directory, you can run:
+### Live Website Link : 
 
-### `npm start`
+### Live Server Link : 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Admin Details:  
+            user : anik1105@gmail.com  pass: anik1105
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Project Details:
 
-### `npm test`
+Reseliya is a resale website where users can post there used product and seller can book product from here. Stripe payment gatway added to make payment. There are many special feature added to user / buyer / admin. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frameworks and Libraries: 
 
-### `npm run build`
+* React
+* TailwindCSS
+* DaisyUi
+* MambaUi
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Website Features and Functionality:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Reseliya have a wonderful user friendly UI to feel best UI experience to our user.
+* Our website is mainly  selling used mobile phone, there are about 6 brand categories.
+* Each category have some product, A buyer can choose product from category and click on See details button to see more details about our product. Here a buyer can see Book button.
+* After clicking book button, a modal will pop up and user can put his meeting location and phone number to place booking. 
+* A user will fine all his booking on My Orders page, where they can delete their order or can pay via Stripe payment getaway
+* A seller can add product from dashboard, he can see all his buyers and All of his product on My products page.
+* Admin can see All users, All Buyers and Reported Items Menu in Dashboard
+* A Buyer can report a product by clicking Report to Admin
+* A seller can advertise their unsold product, After advertising those product will shown on home page.
+* Any user can register as Seller or  Buyer
+* Dashboard menu will change as the role of a user
+* React Helmet Used to dynamically change title of the page
+* I used node server with expressJs
+* I have stored all my data on MongoDb
+* I tried my best to implement this project
+* This project is not completed yet, I will work  on it letter.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### If you want to know more about my site, you can just mail me here:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+My email address: anikkhan1105@gmail.com
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Thanks for visiting my site. 
