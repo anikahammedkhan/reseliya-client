@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ data }) => {
     const { _id, productPrice, buyerName, buyerEmail } = data;
@@ -10,6 +11,7 @@ const CheckoutForm = ({ data }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [paymentSuccess, setPaymentSuccess] = useState(null);
     const [processing, setProcessing] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {
@@ -72,7 +74,6 @@ const CheckoutForm = ({ data }) => {
         }
 
         if (paymentIntent.status === 'succeeded') {
-            toast.success('Payment successful');
             setProcessing(false);
 
             const paymentDetails = {
@@ -97,6 +98,7 @@ const CheckoutForm = ({ data }) => {
                 .then((data) => {
                     if (data) {
                         toast.success('Payment details saved successfully');
+                        navigate('/dashboard/my-orders');
                     }
                 });
         }

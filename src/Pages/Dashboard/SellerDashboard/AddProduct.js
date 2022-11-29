@@ -1,15 +1,76 @@
 import React, { useContext } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     // current date and time
     let today = new Date();
     let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let dateTime = date + ' ' + time;
+
+
+    const handleAddProduct = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const brand = form.brand.value;
+        const image = form.image.value;
+        const condition = form.condition.value;
+        const description = form.description.value;
+        const resale_price = form.resalePrice.value;
+        const original_price = form.originalPrice.value;
+        const location = form.location.value;
+        const time = dateTime;
+        const seller_name = form.seller_name.value;
+        const seller_email = user?.email;
+        const seller_phone = form.sellerPhone.value;
+        const verified = true;
+        const year_used = form.yearUsed.value;
+        const status = 'available';
+
+        const product = {
+            name,
+            brand,
+            image,
+            condition,
+            description,
+            resale_price,
+            original_price,
+            location,
+            time,
+            seller_name,
+            seller_email,
+            seller_phone,
+            verified,
+            year_used,
+            status
+        }
+
+        fetch('http://localhost:5000/addProduct', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success('Product added successfully');
+                    form.reset();
+                    navigate('/dashboard/my-products');
+
+                }
+            })
+            .catch(error => console.error(error));
+
+    }
     return (
         <div className='my-8'>
             <HelmetProvider>
@@ -22,7 +83,7 @@ const AddProduct = () => {
             <p className='text-lg text-center font-semibold text-red-600'>
                 Please fill up the form below to add a new product.
             </p>
-            <form onSubmit="" className='w-3/4 mx-auto'>
+            <form onSubmit={handleAddProduct} className='w-3/4 mx-auto'>
                 <div className='grid grid-cols-1 gap-4'>
                     <div className="form-control">
                         <label className="label">
@@ -35,7 +96,7 @@ const AddProduct = () => {
                             <span className="label-text">Your Product Brand</span>
                         </label>
                         <select name='brand' className="select select-bordered">
-                            <option selected>Apple</option>
+                            <option defaultValue>Apple</option>
                             <option>Xiaomi</option>
                             <option>Nokia</option>
                             <option>Samsung</option>
@@ -85,7 +146,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Your Contact Number</span>
                         </label>
-                        <input name="seller-number" type="number" placeholder="location" className="input input-ghost  input-bordered" required />
+                        <input name="sellerPhone" type="number" placeholder="Your Number" className="input input-ghost  input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -97,35 +158,23 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Original Price</span>
                         </label>
-                        <input name="original-price" type="number" placeholder="Your originaly Price $" defaultValue="" className="input input-ghost  input-bordered" required />
+                        <input name="originalPrice" type="number" placeholder="Your originaly Price $" defaultValue="" className="input input-ghost  input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Reseller price</span>
                         </label>
-                        <input name="original-price" type="number" placeholder="Your originaly Price $" defaultValue="" className="input input-ghost  input-bordered" required />
+                        <input name="resalePrice" type="number" placeholder="Your resale Price $" defaultValue="" className="input input-ghost  input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Your Service Ratings</span>
+                            <span className="label-text">Years of use</span>
                         </label>
-                        <input name="ratings" type="number" placeholder="Your Service Ratings" defaultValue="" className="input input-ghost  input-bordered" required />
+                        <input name="yearUsed" type="number" placeholder="Years of use" defaultValue="" className="input input-ghost  input-bordered" required />
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Comments  (If You Have Any)</span>
-                        </label>
-                        <input name="comments" type="text" placeholder="Your Comments (You can leave this empty if you want)" defaultValue="" className="input input-ghost  input-bordered" />
-                    </div>
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Your Service Details</span>
-                    </label>
-                    <textarea name="details" className="textarea textarea-bordered h-24 w-full" placeholder="Your Service Details" required></textarea>
                 </div>
                 <div className='text-center my-10'>
-                    <input className='btn btn-info px-10' type="submit" value="Add Service" />
+                    <input className='btn btn-success px-10' type="submit" value="Add Service" />
                 </div>
             </form>
         </div>

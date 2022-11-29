@@ -78,10 +78,14 @@ const MyOrders = () => {
                                 </td>
                                 <td>{order?.sellerName}</td>
                                 <td>
-                                    <button onClick={() => handleDeleteOrder(order?.productId, order?._id)} className='btn btn-sm btn-error'>Delete Order</button>
+                                    {
+                                        order?.payment === true ? <button className='text-green-500 font-bold btn btn-disabled btn-sm btn-error'>Delete Order</button> : <button onClick={() => handleDeleteOrder(order?.productId, order?._id)} className='btn btn-sm btn-error'>Delete Order</button>
+                                    }
                                 </td>
                                 <td>
-                                    <Link to={`/dashboard/payment/${order?._id}`}><button className='btn btn-success btn-sm'>Pay Now</button></Link>
+                                    {
+                                        order?.payment === true ? <span className='text-green-500 font-bold'>Paid</span> : <Link to={`/dashboard/payment/${order?._id}`} className='btn btn-sm btn-success'>Pay Now</Link>
+                                    }
                                 </td>
                             </tr>
                             ))
