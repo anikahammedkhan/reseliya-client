@@ -30,7 +30,7 @@ const BookingModal = ({ product }) => {
             sellerName: seller_name
         }
 
-        fetch("http://localhost:5000/bookings", {
+        fetch("https://reseliya-server.vercel.app/bookings", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,7 +41,7 @@ const BookingModal = ({ product }) => {
             .then(data => {
                 if (data) {
                     // set product booking status to booked
-                    fetch(`http://localhost:5000/product/${_id}`, {
+                    fetch(`https://reseliya-server.vercel.app/product/${_id}`, {
                         method: "PATCH",
                         headers: {
                             "Content-Type": "application/json"

@@ -4,7 +4,7 @@ const Allbuyers = () => {
 
     const [buyers, setBuyers] = useState([]);
 
-    fetch('http://localhost:5000/users/Buyer')
+    fetch('https://reseliya-server.vercel.app/users/Buyer')
         .then(res => res.json())
         .then(data => setBuyers(data))
     return (

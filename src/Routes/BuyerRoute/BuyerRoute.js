@@ -9,7 +9,7 @@ const BuyerRoute = ({ children }) => {
     const email = user?.email;
     const [role, setRole] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${email}`)
+        fetch(`https://reseliya-server.vercel.app/user/${email}`)
             .then(res => res.json())
             .then(data => {
                 setRole(data);

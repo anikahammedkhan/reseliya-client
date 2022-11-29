@@ -6,7 +6,7 @@ const MyBuyers = () => {
     const { user } = useContext(AuthContext);
     const sellerEmail = user?.email;
 
-    fetch(`http://localhost:5000/mybuyer/${sellerEmail}`)
+    fetch(`https://reseliya-server.vercel.app/mybuyer/${sellerEmail}`)
         .then(res => res.json())
         .then(data => setBuyers(data))
     // console.log(buyers);

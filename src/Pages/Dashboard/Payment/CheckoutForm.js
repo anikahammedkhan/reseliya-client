@@ -14,7 +14,7 @@ const CheckoutForm = ({ data }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://reseliya-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ productPrice }),
@@ -89,7 +89,7 @@ const CheckoutForm = ({ data }) => {
                 paymentDescription: paymentIntent.description,
             }
 
-            fetch("http://localhost:5000/payments", {
+            fetch("https://reseliya-server.vercel.app/payments", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(paymentDetails),

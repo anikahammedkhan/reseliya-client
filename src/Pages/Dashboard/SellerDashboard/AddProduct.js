@@ -52,7 +52,7 @@ const AddProduct = () => {
             status
         }
 
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://reseliya-server.vercel.app/addProduct', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

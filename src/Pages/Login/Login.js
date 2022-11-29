@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     const saveUser = (name, email, role, uId) => {
-        fetch('http://localhost:5000/users', {
+        fetch('https://reseliya-server.vercel.app/users', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, role, uId })

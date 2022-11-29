@@ -40,12 +40,12 @@ const router = createBrowserRouter([
             {
                 path: '/category/:brand',
                 element: <CategoryProducts></CategoryProducts>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand}`)
+                loader: ({ params }) => fetch(`https://reseliya-server.vercel.app/products/${params.brand}`)
             },
             {
                 path: '/product/:id',
                 element: <PrivateRoute><SingleProductDetails></SingleProductDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://reseliya-server.vercel.app/product/${params.id}`)
             },
             {
                 path: "/blog",
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/payment/:id",
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`)
+                loader: ({ params }) => fetch(`https://reseliya-server.vercel.app/order/${params.id}`)
             },
             {
                 path: '/dashboard/all-sellers',

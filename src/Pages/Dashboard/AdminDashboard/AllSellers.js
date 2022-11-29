@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const AllSellers = () => {
     const [sellers, setSellers] = useState([]);
 
-    fetch('http://localhost:5000/users/Seller')
+    fetch('https://reseliya-server.vercel.app/users/Seller')
         .then(res => res.json())
         .then(data => setSellers(data))
     return (

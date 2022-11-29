@@ -9,7 +9,7 @@ const MyProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/seller/${email}`)
+        fetch(`https://reseliya-server.vercel.app/products/seller/${email}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [email])

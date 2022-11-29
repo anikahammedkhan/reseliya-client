@@ -6,7 +6,7 @@ const useCheckRole = (email) => {
     const [isBuyer, setIsBuyer] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://reseliya-server.vercel.app/users")
             .then((res) => res.json())
             .then((data) => {
                 const user = data.find((user) => user.email === email);

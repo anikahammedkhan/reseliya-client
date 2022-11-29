@@ -9,14 +9,14 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${buyerEmail}`)
+        fetch(`https://reseliya-server.vercel.app/orders/${buyerEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [buyerEmail, orders])
 
     const handleDeleteOrder = (id, oId) => {
 
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://reseliya-server.vercel.app/product/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -25,7 +25,7 @@ const MyOrders = () => {
         })
             .then(res => res.json())
             .then(data => {
-                fetch(`http://localhost:5000/orders/${oId}`, {
+                fetch(`https://reseliya-server.vercel.app/orders/${oId}`, {
                     method: "DELETE",
                     headers: {
                         'Content-type': 'application/json'
