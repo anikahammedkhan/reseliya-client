@@ -22,6 +22,7 @@ import ReportedItems from '../../Pages/Dashboard/AdminDashboard/ReportedItems';
 import AdminRoutes from '../AdminRoutes/AdminRoutes';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import SellerRoute from '../SellerRoute/SellerRoute';
+import BuyerRoute from '../BuyerRoute/BuyerRoute';
 
 const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/product/:id',
-                element: <SingleProductDetails></SingleProductDetails>,
+                element: <PrivateRoute><SingleProductDetails></SingleProductDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
             },
             {
@@ -86,11 +87,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/my-orders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: "/dashboard/payment/:id",
-                element: <Payment></Payment>,
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`)
             },
             {
