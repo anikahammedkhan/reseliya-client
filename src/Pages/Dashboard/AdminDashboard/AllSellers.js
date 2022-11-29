@@ -17,7 +17,7 @@ const AllSellers = () => {
                             <th>Seller Email</th>
                             <th>Seller Role</th>
                             <th>Seller Uid</th>
-                            <th>Delete Seller</th>
+                            <th>Delete/ Verify Seller</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +28,10 @@ const AllSellers = () => {
                                     <td>{seller.email}</td>
                                     <td>{seller.role}</td>
                                     <td>{seller.uId}$</td>
-                                    <td><button className='bg-red-500 text-white px-3 py-1 rounded'>Delete</button></td>
+                                    <td>
+                                        <button className='bg-red-500 text-white px-3 py-1 rounded'>Delete</button>
+                                        <button className='bg-green-500 text-white px-3 py-1 rounded mx-2'>Verify</button>
+                                    </td>
                                 </tr>
                             ))
                         }
